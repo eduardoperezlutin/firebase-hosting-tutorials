@@ -9,6 +9,7 @@ import * as functions from 'firebase-functions';
 
 exports.random = functions.https.onRequest((req, res) => {
     const randomNumber = Math.random();
+    res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
     res.status(200).send(`
         <!doctype html>
             <head>
